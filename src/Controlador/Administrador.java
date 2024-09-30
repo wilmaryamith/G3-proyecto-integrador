@@ -1,7 +1,10 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Controlador;
 
-public class Asesor {
-    
+public class Administrador {
     /* Atributoss Globales */
     private String nombre;
     private String apellido;
@@ -9,15 +12,13 @@ public class Asesor {
     private String contraseña;
 
     //Metodo Constructor
-
-    public Asesor(String nombre, String apellido, String usuario, String contraseña) {
+    public Administrador(String nombre, String apellido, String usuario, String contraseña) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
         this.contraseña = contraseña;
     }
-    
-    
+
     public String getNombre() {
         return nombre;
     }
@@ -50,7 +51,7 @@ public class Asesor {
         this.contraseña = contraseña;
     }
     
-    public void agregarAsesor(String nombre, String apellido, String usuario, String contraseña) {
+    public void agregarAdministrador(String nombre, String apellido, String usuario, String contraseña) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;

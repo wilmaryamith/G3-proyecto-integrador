@@ -3,13 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vistas;
-import Controlador.Asesor;
-import Controlador.Cliente;
-import Controlador.Pago;
-import java.text.ParseException;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.JOptionPane;
+import java.text.ParseException;
+
+
+
 /**
  *
  * @author julia
@@ -204,28 +207,48 @@ public class RegistroPagoAsesor extends javax.swing.JFrame {
 
     private void BotonContinuar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonContinuar
         // TODO add your handling code here:
-            try {
+        try {
             // Capturar el valor del pago
-            Double valorIngresado = Double.parseDouble(jTextField2.getText());
+            Double valorIngresado = Double.valueOf(jTextField2.getText());
 
-            // Capturar la fecha Ingresada y convertirla a el formato
+            // Capturar la fecha ingresada y convertirla al formato
             String fecha = jTextField3.getText();
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
             Date fechaIngresada = formatoFecha.parse(fecha);
 
-            // Capturar el cliente y el asesor asociados a una venta
-            Cliente clienteIngresado = (Cliente) jComboBox3.getSelectedItem();
-            Asesor asesorIngresado = (Asesor) jComboBox1.getSelectedItem();
-            /* Se usara este si en la lista de clientes o asesores tenemos en lugar de objetos cadenas de texto.
-            String clienteIngresado = jComboBox3.getSelectedItem().toString();
-            String asesorIngresado = jComboBox1.getSelectedItem().toString(); 
-            */
+            // Capturar la cédula del cliente y del asesor
+            String cedulaClienteStr = jComboBox3.getSelectedItem().toString().split(" - ")[0]; // Obtener solo la cédula
+            String cedulaAsesorStr = jComboBox1.getSelectedItem().toString().split(" - ")[0];  // Asegúrate de que esto contenga la cédula
 
-            // Crear el objeto Pago
-            Pago pago = new Pago(valorIngresado,fechaIngresada,clienteIngresado,asesorIngresado);
+            // Convertir las cédulas a tipo numérico
+            long cedulaCliente = Long.parseLong(cedulaClienteStr); // Cambia a Integer si es de tipo INT
+            long cedulaAsesor = Long.parseLong(cedulaAsesorStr);   // Cambia a Integer si es de tipo INT
 
-            // Mostrar mensaje de éxito
-            JOptionPane.showMessageDialog(this, "Pago creado correctamente.");
+            // Lógica para insertar el pago en la base de datos
+            String url ="jdbc:oracle:thin:@localhost:1521:XE"; 
+            String user = "JJW"; // Cambia a tu usuario
+            String password = "JJW";
+
+            String sql = "INSERT INTO Pago (valor, fecha, cedula_cliente, cedula_asesor) VALUES (?, ?, ?, ?)";
+
+            try (java.sql.Connection conn = DriverManager.getConnection(url, user, password);
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+
+                pstmt.setDouble(1, valorIngresado);
+                pstmt.setDate(2, new java.sql.Date(fechaIngresada.getTime())); // Convertir a java.sql.Date
+                pstmt.setLong(3, cedulaCliente); // Usar la cédula del cliente
+                pstmt.setLong(4, cedulaAsesor); // Usar la cédula del asesor
+
+                int rowsAffected = pstmt.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(this, "Pago creado correctamente.");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al crear el pago.");
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, "Error de base de datos: " + e.getMessage());
+            }
 
         } catch (NumberFormatException ex) {
             // Capturar excepción si el valor ingresado no es un número
@@ -263,23 +286,18 @@ public class RegistroPagoAsesor extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MenuPrincipal().setVisible(true);
         });
     }
     

@@ -4,19 +4,24 @@ public class Asesor {
     
     /* Atributoss Globales */
     private String nombre;
+    private Number cedula;
     private String apellido;
     private String usuario;
     private String contraseña;
 
     //Metodo Constructor
 
-    public Asesor(String nombre, String apellido, String usuario, String contraseña) {
+    public Asesor(String nombre,Long cedula, String apellido, String usuario, String contraseña) {
         this.nombre = nombre;
+        this.cedula=cedula;
         this.apellido = apellido;
         this.usuario = usuario;
         this.contraseña = contraseña;
     }
     
+    public long getCedula(){
+        return 0;
+    }
     
     public String getNombre() {
         return nombre;
@@ -49,11 +54,5 @@ public class Asesor {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
-    public void agregarAsesor(String nombre, String apellido, String usuario, String contraseña) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.usuario = usuario;
-        this.contraseña = contraseña;
-    }
+   
 }

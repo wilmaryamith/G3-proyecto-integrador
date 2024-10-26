@@ -3,14 +3,15 @@ package Controlador;
 
 public class Cliente {
     
-    private String cedula;
+    
+    private Long cedula;
     private String nombre;
     private String SISBEN;
     private String subsidio;
     private String direccion;
     private String telefono;
 
-    public Cliente(String cedula, String nombre, String SISBEN, String subsidio, String direccion, String telefono, String correo) {
+    public Cliente(long cedula, String nombre) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.SISBEN = SISBEN;
@@ -19,8 +20,8 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getCedula() {
-        return cedula;
+    public long getCedula() {
+        return 0;
     }
 
     public String getNombre() {
@@ -45,7 +46,7 @@ public class Cliente {
 
     
 
-    public void setCedula(String cedula) {
+    public void setCedula(Long cedula) {
         this.cedula = cedula;
     }
 

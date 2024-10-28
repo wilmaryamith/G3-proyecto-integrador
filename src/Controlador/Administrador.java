@@ -50,11 +50,4 @@ public class Administrador {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
-    public void agregarAdministrador(String nombre, String apellido, String usuario, String contraseña) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.usuario = usuario;
-        this.contraseña = contraseña;
-    }
 }

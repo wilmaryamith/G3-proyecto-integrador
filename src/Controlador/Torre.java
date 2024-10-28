@@ -28,23 +28,4 @@ public class Torre {
     public void setNumeroApartamentos(String numeroApartamentos) {
         this.numeroApartamentos = numeroApartamentos;
     }
-    
-    public void agregarTorre(String numeroTorre, String numeroApartamentos) {
-        this.numeroTorre = numeroTorre;
-        this.numeroApartamentos = numeroApartamentos;
-    }
-    
-    public void leerTorre(String numeroTorre){
-    // Aqui va laa consulta a la base de datos que devuelve la torre
-    }
-    
-    public void actualizarTorre(String nuevoNumeroTorre,String nuevoNumeroApartamentos){
-        this.numeroTorre = nuevoNumeroTorre;
-        this.numeroApartamentos = nuevoNumeroApartamentos;
-    }
-    
-    public void eliminarTorre(){
-        this.numeroTorre = "";
-        this.numeroApartamentos = "";
-    }
 }

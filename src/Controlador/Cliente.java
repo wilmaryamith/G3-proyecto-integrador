@@ -11,7 +11,8 @@ public class Cliente {
     private String direccion;
     private String telefono;
 
-    public Cliente(long cedula, String nombre) {
+    // Metodo constructor
+    public Cliente(Long cedula, String nombre, String SISBEN, String subsidio, String direccion, String telefono) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.SISBEN = SISBEN;
@@ -20,6 +21,7 @@ public class Cliente {
         this.telefono = telefono;
     }
 
+    //Metodos getter and setter
     public long getCedula() {
         return 0;
     }
@@ -43,8 +45,6 @@ public class Cliente {
     public String getTelefono() {
         return telefono;
     }
-
-    
 
     public void setCedula(Long cedula) {
         this.cedula = cedula;

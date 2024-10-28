@@ -87,41 +87,4 @@ public class Inmueble {
     public void setFechaEscritura(String fechaEscritura) {
         this.fechaEscritura = fechaEscritura;
     }
-
-    public void agregarInmueble(String numero, double valor, String tipoUnidad, float area, String matricula, String vendedor, String fechaEscritura,String numeroTorre) {
-        this.numero = numero;
-        this.valor = valor;
-        this.tipoUnidad = tipoUnidad;
-        this.area = area;
-        this.matricula = matricula;
-        this.vendedor = vendedor;
-        this.fechaEscritura = fechaEscritura;
-        this.numeroTorre=numeroTorre;
-    }
-    
-    public void leerApartamento(String numero){
-    // Aqui va laa consulta a la base de datos que devuelve el apartamento
-    }
-    
-    public void actualizarInmueble(String nuevoNumero,double nuevoValor,String nuevoTipoUnidad,float nuevaArea,String nuevaMatricula,String nuevoVendedor,String nuevaFechaEscritura, String nuevoNumeroTorre){
-        this.numero = nuevoNumero;
-        this.valor = nuevoValor;
-        this.tipoUnidad = nuevoTipoUnidad;
-        this.area = nuevaArea;
-        this.matricula = nuevaMatricula;
-        this.vendedor = nuevoVendedor;
-        this.fechaEscritura = nuevaFechaEscritura; 
-        this.numeroTorre=nuevoNumeroTorre;
-    }
-    
-    public void eliminarInmueble(){
-        this.numero = "";
-        this.valor = 0;
-        this.tipoUnidad = "";
-        this.area = 0;
-        this.matricula = "";
-        this.vendedor = "";
-        this.fechaEscritura = "";
-        this.numeroTorre="";
-    }
 }

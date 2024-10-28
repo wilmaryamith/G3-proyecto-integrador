@@ -4,7 +4,7 @@ public class Asesor {
     
     /* Atributoss Globales */
     private String nombre;
-    private Number cedula;
+    private Long cedula;
     private String apellido;
     private String usuario;
     private String contraseña;
@@ -53,6 +53,5 @@ public class Asesor {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
-    }
-   
+    }  
 }

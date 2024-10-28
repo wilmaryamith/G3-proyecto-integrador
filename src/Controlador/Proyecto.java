@@ -28,24 +28,4 @@ public class Proyecto {
     public void setNumeroTorres(String numeroTorres) {
         this.numeroTorres = numeroTorres;
     }
-    
-    //Metodos adicionales
-    public void agregarProyecto(String nombre, String numeroTorres) {
-        this.nombre = nombre;
-        this.numeroTorres = numeroTorres;
-    }
-    
-    public void leerProyecto(String nombre){
-        // Aqui va laa consulta a la base de datos que devuelve el proyecto
-    }
-    
-    public void actualizarProyecto(String nuevoNombre, String nuevoNumeroTorres){
-        this.nombre=nuevoNombre;
-        this.numeroTorres=nuevoNumeroTorres;
-    }
-    
-    public void eliminarProyecto(){
-        this.nombre="";
-        this.numeroTorres="";
-    }
 }

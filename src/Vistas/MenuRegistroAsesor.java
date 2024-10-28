@@ -234,6 +234,8 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
 
     private void BotonContinuar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonContinuar
         // TODO add your handling code here:
+        
+        //Creamos variables y dentro de ellas se almacenara el texto que el usuario va a digitar
         String cedulaIngresada = jTextField10.getText();
         String nombreIngresado = jTextField9.getText();
         String direccionIngresada = jTextField3.getText();
@@ -242,16 +244,18 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
         String usuarioIngresado = jTextField6.getText();
         String contrasenaIngresada = jTextField8.getText();
         
-        // Lógica para insertar en la base de datos
-        String url ="jdbc:oracle:thin:@localhost:1521:XE"; // Cambia a tu URL de base de datos
-        String user = "JJW"; // Cambia a tu usuario
-        String password = "JJW"; // Cambia a tu contraseña
-    
+        // Conexion a la BD
+        String url ="jdbc:oracle:thin:@localhost:1521:XE"; 
+        String user = "JJW"; 
+        String password = "JJW"; 
+        
+        // Consulta SQL para insertar los valores anteriores en la tabla Asesor
         String sql = "INSERT INTO Asesor (cedula, nombre, direccion, telefono, correo, usuario, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
+        // Prepara la conexion con los datos que le dimos anteriormente
         try (Connection conn1 = DriverManager.getConnection(url, user, password);
         PreparedStatement pstmt = conn1.prepareStatement(sql)){
-         
+  
         pstmt.setString(1, cedulaIngresada);
         pstmt.setString(2, nombreIngresado);
         pstmt.setString(3, direccionIngresada);

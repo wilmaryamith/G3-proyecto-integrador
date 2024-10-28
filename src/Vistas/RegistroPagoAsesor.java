@@ -217,27 +217,29 @@ public class RegistroPagoAsesor extends javax.swing.JFrame {
             Date fechaIngresada = formatoFecha.parse(fecha);
 
             // Capturar la cédula del cliente y del asesor
-            String cedulaClienteStr = jComboBox3.getSelectedItem().toString().split(" - ")[0]; // Obtener solo la cédula
-            String cedulaAsesorStr = jComboBox1.getSelectedItem().toString().split(" - ")[0];  // Asegúrate de que esto contenga la cédula
+            String cedulaClienteStr = jComboBox3.getSelectedItem().toString().split(" - ")[0]; 
+            String cedulaAsesorStr = jComboBox1.getSelectedItem().toString().split(" - ")[0]; 
 
             // Convertir las cédulas a tipo numérico
-            long cedulaCliente = Long.parseLong(cedulaClienteStr); // Cambia a Integer si es de tipo INT
-            long cedulaAsesor = Long.parseLong(cedulaAsesorStr);   // Cambia a Integer si es de tipo INT
+            long cedulaCliente = Long.parseLong(cedulaClienteStr); 
+            long cedulaAsesor = Long.parseLong(cedulaAsesorStr);
 
-            // Lógica para insertar el pago en la base de datos
+            // Conexion a la BD
             String url ="jdbc:oracle:thin:@localhost:1521:XE"; 
-            String user = "JJW"; // Cambia a tu usuario
+            String user = "JJW";
             String password = "JJW";
 
+            // Consulta SQL que ingresara los datos a la tabla Pago
             String sql = "INSERT INTO Pago (valor, fecha, cedula_cliente, cedula_asesor) VALUES (?, ?, ?, ?)";
 
+            // Hace la conexion con los datos anteriores
             try (java.sql.Connection conn = DriverManager.getConnection(url, user, password);
             PreparedStatement pstmt = conn.prepareStatement(sql)){
 
                 pstmt.setDouble(1, valorIngresado);
-                pstmt.setDate(2, new java.sql.Date(fechaIngresada.getTime())); // Convertir a java.sql.Date
-                pstmt.setLong(3, cedulaCliente); // Usar la cédula del cliente
-                pstmt.setLong(4, cedulaAsesor); // Usar la cédula del asesor
+                pstmt.setDate(2, new java.sql.Date(fechaIngresada.getTime())); 
+                pstmt.setLong(3, cedulaCliente);
+                pstmt.setLong(4, cedulaAsesor);
 
                 int rowsAffected = pstmt.executeUpdate();
 

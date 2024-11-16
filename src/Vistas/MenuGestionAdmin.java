@@ -31,9 +31,11 @@ public class MenuGestionAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_GestionarProyectos = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        btn_GestionarAsesores = new javax.swing.JButton();
+        btn_GestionarInmuebles = new javax.swing.JButton();
+        btn_GestionarTorres = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,29 +66,17 @@ public class MenuGestionAdmin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
-        jButton1.setForeground(new java.awt.Color(0, 51, 102));
-        jButton1.setText("Crear Proyecto");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonCrearProyecto(evt);
-            }
-        });
-
-        jButton2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 51, 102));
-        jButton2.setText("Gestionar Proyectos");
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_GestionarProyectos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btn_GestionarProyectos.setForeground(new java.awt.Color(0, 51, 102));
+        btn_GestionarProyectos.setText("Gestionar Proyectos");
+        btn_GestionarProyectos.setBorder(null);
+        btn_GestionarProyectos.setBorderPainted(false);
+        btn_GestionarProyectos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_GestionarProyectos.setFocusPainted(false);
+        btn_GestionarProyectos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonGestionarProyectos(evt);
             }
@@ -94,6 +84,32 @@ public class MenuGestionAdmin extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton7.setText("←");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        btn_GestionarAsesores.setText("Gestionar Asesores");
+        btn_GestionarAsesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GestionarAsesoresActionPerformed(evt);
+            }
+        });
+
+        btn_GestionarInmuebles.setText("Gestionar Inmuebles");
+        btn_GestionarInmuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GestionarInmueblesActionPerformed(evt);
+            }
+        });
+
+        btn_GestionarTorres.setText("Gestionar Torres");
+        btn_GestionarTorres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GestionarTorresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,19 +118,26 @@ public class MenuGestionAdmin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(107, 107, 107)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btn_GestionarAsesores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_GestionarProyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_GestionarTorres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_GestionarInmuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -124,11 +147,15 @@ public class MenuGestionAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jLabel2)
-                .addGap(56, 56, 56)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(btn_GestionarAsesores, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btn_GestionarProyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(btn_GestionarTorres, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(btn_GestionarInmuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -148,13 +175,9 @@ public class MenuGestionAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonCrearProyecto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearProyecto
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonCrearProyecto
-
     private void BotonGestionarProyectos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionarProyectos
         // TODO add your handling code here:
-        GestionProyectosAdmin ventana = new GestionProyectosAdmin();
+        CRUDProyecto ventana = new CRUDProyecto();
         
         // Mostrar el segundo JFrame
         ventana.setVisible(true);
@@ -162,6 +185,48 @@ public class MenuGestionAdmin extends javax.swing.JFrame {
         // Oculta el primer frame
         this.dispose();
     }//GEN-LAST:event_BotonGestionarProyectos
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        InicioSesionAdmin ventana = new InicioSesionAdmin();
+        
+        ventana.setVisible(true);
+    
+        // Oculta el primer frame
+        this.dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void btn_GestionarAsesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GestionarAsesoresActionPerformed
+        // TODO add your handling code here:
+        CRUDAsesor ventana = new CRUDAsesor();
+        
+        ventana.setVisible(true);
+    
+        // Oculta el primer frame
+        this.dispose();
+    }//GEN-LAST:event_btn_GestionarAsesoresActionPerformed
+
+    private void btn_GestionarInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GestionarInmueblesActionPerformed
+        // TODO add your handling code here:
+        CRUDInmueble ventana = new CRUDInmueble();
+        
+        // Mostrar el segundo JFrame
+        ventana.setVisible(true);
+    
+        // Oculta el primer frame
+        this.dispose();
+    }//GEN-LAST:event_btn_GestionarInmueblesActionPerformed
+
+    private void btn_GestionarTorresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GestionarTorresActionPerformed
+        // TODO add your handling code here:
+        CRUDTorre ventana = new CRUDTorre();
+        
+        // Mostrar el segundo JFrame
+        ventana.setVisible(true);
+    
+        // Oculta el primer frame
+        this.dispose();
+    }//GEN-LAST:event_btn_GestionarTorresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,8 +265,10 @@ public class MenuGestionAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_GestionarAsesores;
+    private javax.swing.JButton btn_GestionarInmuebles;
+    private javax.swing.JButton btn_GestionarProyectos;
+    private javax.swing.JButton btn_GestionarTorres;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

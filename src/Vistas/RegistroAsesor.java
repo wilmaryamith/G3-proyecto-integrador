@@ -4,22 +4,21 @@
  */
 package Vistas;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import Model.Asesor;
+import Controlador.AsesorController;
 
 /**
  *
  * @author julia
  */
-public class MenuRegistroAsesor extends javax.swing.JFrame {
+public class RegistroAsesor extends javax.swing.JFrame {
+
+    private String _cedula, _nombre, _direccion, _telefono, _correo, _usuario, _contrasena;
 
     /**
      * Creates new form Principal
      */
-    public MenuRegistroAsesor() {
+    public RegistroAsesor() {
         initComponents();
     }
 
@@ -39,22 +38,22 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txt_Direccion = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txt_Usuario = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txt_Contrasena = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
+        txt_Correo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txt_Telefono = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txt_Nombre = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        txt_Cedula = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        btn_Agregar = new javax.swing.JButton();
 
         jLabel7.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,18 +91,6 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
                 .addGap(185, 185, 185))
         );
 
-        jButton1.setForeground(new java.awt.Color(0, 51, 102));
-        jButton1.setText("Continuar");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonContinuar(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre");
@@ -140,6 +127,13 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Cedula");
 
+        btn_Agregar.setText("Continuar");
+        btn_Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AgregarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -149,13 +143,14 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addComponent(btn_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField10)
+                            .addComponent(txt_Cedula)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,12 +161,12 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 92, Short.MAX_VALUE))
-                            .addComponent(jTextField9)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField8))
+                            .addComponent(txt_Nombre)
+                            .addComponent(txt_Direccion)
+                            .addComponent(txt_Telefono)
+                            .addComponent(txt_Correo)
+                            .addComponent(txt_Usuario)
+                            .addComponent(txt_Contrasena))
                         .addGap(63, 63, 63)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -184,36 +179,36 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(txt_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                    .addComponent(btn_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -232,68 +227,47 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonContinuar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonContinuar
+    private void BotonAtras(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtras
+        // TODO add your handling code here:
+        InicioSesionAsesor ventana = new InicioSesionAsesor();
+
+        ventana.setVisible(true);
+
+        // Oculta el primer frame
+        this.dispose();
+    }//GEN-LAST:event_BotonAtras
+
+    private void btn_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarActionPerformed
         // TODO add your handling code here:
         
-        //Creamos variables y dentro de ellas se almacenara el texto que el usuario va a digitar
-        String cedulaIngresada = jTextField10.getText();
-        String nombreIngresado = jTextField9.getText();
-        String direccionIngresada = jTextField3.getText();
-        String telefonoIngresado = jTextField7.getText();
-        String correoIngresado = jTextField5.getText();
-        String usuarioIngresado = jTextField6.getText();
-        String contrasenaIngresada = jTextField8.getText();
-        
-        // Conexion a la BD
-        String url ="jdbc:oracle:thin:@localhost:1521:XE"; 
-        String user = "JJW"; 
-        String password = "JJW"; 
-        
-        // Consulta SQL para insertar los valores anteriores en la tabla Asesor
-        String sql = "INSERT INTO Asesor (cedula, nombre, direccion, telefono, correo, usuario, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        
-        // Prepara la conexion con los datos que le dimos anteriormente
-        try (Connection conn1 = DriverManager.getConnection(url, user, password);
-        PreparedStatement pstmt = conn1.prepareStatement(sql)){
-  
-        pstmt.setString(1, cedulaIngresada);
-        pstmt.setString(2, nombreIngresado);
-        pstmt.setString(3, direccionIngresada);
-        pstmt.setString(4, telefonoIngresado);
-        pstmt.setString(5, correoIngresado);
-        pstmt.setString(6, usuarioIngresado);
-        pstmt.setString(7, contrasenaIngresada);
+        Asesor registrarAsesor = new Asesor();
+        AsesorController nuevoAsesor = new AsesorController();
 
-        
-        int rowsAffected = pstmt.executeUpdate();
-        
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(this, "Asesor creado correctamente.");
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al crear el asesor.");
-        }
-        
-        } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Error de base de datos: " + e.getMessage());
-        }
+        _cedula = txt_Cedula.getText();
+        _nombre = txt_Nombre.getText();
+        _direccion = txt_Direccion.getText();
+        _telefono = txt_Telefono.getText();
+        _correo = txt_Correo.getText();
+        _usuario = txt_Usuario.getText();
+        _contrasena = txt_Contrasena.getText();
+
+        registrarAsesor.setCedula(_cedula);
+        registrarAsesor.setNombre(_nombre);
+        registrarAsesor.setDireccion(_direccion);
+        registrarAsesor.setCorreo(_correo);
+        registrarAsesor.setTelefono(_telefono);
+        registrarAsesor.setUsuario(_usuario);
+        registrarAsesor.setContrasena(_contrasena);
+
+        nuevoAsesor.creacion(registrarAsesor);
 
         // Abrir ventana de inicio de sesión
         InicioSesionAsesor ventana = new InicioSesionAsesor();
         ventana.setVisible(true);
 
         // Oculta el primer frame
-        this.dispose(); 
-    }//GEN-LAST:event_BotonContinuar
-
-    private void BotonAtras(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtras
-        // TODO add your handling code here:
-        InicioSesionAsesor ventana = new InicioSesionAsesor();
-        
-        ventana.setVisible(true);
-    
-        // Oculta el primer frame
         this.dispose();
-    }//GEN-LAST:event_BotonAtras
+    }//GEN-LAST:event_btn_AgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,7 +306,7 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_Agregar;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
@@ -347,13 +321,13 @@ public class MenuRegistroAsesor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txt_Cedula;
+    private javax.swing.JTextField txt_Contrasena;
+    private javax.swing.JTextField txt_Correo;
+    private javax.swing.JTextField txt_Direccion;
+    private javax.swing.JTextField txt_Nombre;
+    private javax.swing.JTextField txt_Telefono;
+    private javax.swing.JTextField txt_Usuario;
     // End of variables declaration//GEN-END:variables
 }

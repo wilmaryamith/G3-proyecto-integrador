@@ -200,7 +200,7 @@ public class InicioSesionAsesor extends javax.swing.JFrame {
 
     private void BotonRegistrarse(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarse
         // TODO add your handling code here:
-        MenuRegistroAsesor ventana = new MenuRegistroAsesor();
+        RegistroAsesor ventana = new RegistroAsesor();
         
         // Mostrar el segundo JFrame
         ventana.setVisible(true);
